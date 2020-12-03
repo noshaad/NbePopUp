@@ -39,7 +39,7 @@
     </pre>
 <p>  it's ok to change with or height or border radius and back ground but it dont change the position and displays  </p>
   <p><b>then we need the class NbePopUp</b> (you can find it bellow the html file)</p>
-  <p><b>then we need our popup html and some trigger triggers can be any element but pop up must be like this(obviusly you can have any thing replace of content.. ..)</b></p>
+  <p><b>then we need our popup html and some trigger</b><br/> triggers can be any element but pop up must be like this(obviusly you can have any thing replace of content.. ..)</p>
   <pre>
 &lt;div class="nbe-pop-up"&gt;
   &lt;div class="nbe-pop-up-holder"&gt;
