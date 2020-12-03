@@ -51,11 +51,11 @@
 &lt;/div&gt;
   </pre>
   
-  <p>and now we must make the js and browser know that which elment will make the pop up appear by clicking on it<br>
+  <p>and now we must make the js and browser know that which elment will make the pop up appear by clicking on it<br/>
 	for that we use 2 attribiut <br/>
 	one is for the triger which is this: nbe-pop-triger="sometext"
-	second one is  for the popup it self which is this:nbe-pop-trigee="sometext"<br>
-	make sure both values are the same like now that both of them are "sometext"<br>
+	second one is  for the popup it self which is this:nbe-pop-trigee="sometext"<br/>
+	make sure both values are the same like now that both of them are "sometext"<br/>
 	and in the end they become like this:</p>
 <pre>
 &lt;button class="can-be-any-thing" nbe-pop-triger="name"&gt;click here&lt;/button&gt;
