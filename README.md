@@ -53,7 +53,7 @@
   
   <p>and now we must make the js and browser know that which elment will make the pop up appear by clicking on it<br/>
 	for that we use 2 attribiut <br/>
-	one is for the triger which is this: nbe-pop-triger="sometext"
+	one is for the triger which is this: nbe-pop-triger="sometext"<br/>
 	second one is  for the popup it self which is this:nbe-pop-trigee="sometext"<br/>
 	make sure both values are the same like now that both of them are "sometext"<br/>
 	and in the end they become like this:</p>
