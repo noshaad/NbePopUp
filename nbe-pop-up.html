@@ -17,6 +17,8 @@
 			z-index: 9999;
 			display: none;
 			left: 0;
+			overflow-y: scroll;
+			direction: ltr;
 		}
 
 		.nbe-pop-up-content {
@@ -83,7 +85,7 @@
 					}, 1)
 				})
 				/* for closeing */
-				$("[nbe-pop-trigee=" + selfClass.name + "] " + selfClass.closer).click(function () {
+				$("[nbe-pop-trigee=" + selfClass.name + "], " + selfClass.closer).click(function () {
 					$("[nbe-pop-trigee=" + selfClass.name + "]").removeAttr('style');
 					$("[nbe-pop-trigee=" + selfClass.name + "] .nbe-pop-up-content").removeAttr('style');
 				})
