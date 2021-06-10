@@ -43,6 +43,9 @@
 		.show-nbe-pop-up {
 			width: 100%;
 		}
+		.nbe-no-scrolling{
+			overflow:hidden;
+		}
 	</style>
 </head>
 
@@ -59,50 +62,63 @@
 
 
 	<script>
-		class NbePopUp {
-			constructor(name, closers, clickFunc) {
-				this.name = name;
-				this.closer = closers ? closers : "";
-				this.runCodeAfterClick = clickFunc;
-				this.excute()
-			}
+		
+class NbePopUp {
+    constructor(name, closers, clickFunc,closeFunc) {
+        this.name = name;
+        this.closer = closers ? closers : "";
+        this.runCodeAfterClick = clickFunc;
+        this.runCodeAfterClose = closeFunc;
+        this.data={};
+        this.excute()
+    }
 
-			eventsNbe() {
-				/* for opening */
-				var selfClass = this;
-				$("[nbe-pop-triger=" + selfClass.name + "]").click(function (e) {
-					e.preventDefault();
-					e.stopPropagation();
-					if( selfClass.runCodeAfterClick){
-						selfClass.runCodeAfterClick()
-					}
-					$('[nbe-pop-trigee]').click();
-					$("[nbe-pop-trigee=" + selfClass.name + "]").css({
-						'display': 'flex'
-					})
-					setTimeout(function () {
-						$("[nbe-pop-trigee=" + selfClass.name + "] .nbe-pop-up-content").css('opacity', 1)
-					}, 1)
-				})
-				/* for closeing */
-				$("[nbe-pop-trigee=" + selfClass.name + "], " + selfClass.closer).click(function () {
-					$("[nbe-pop-trigee=" + selfClass.name + "]").removeAttr('style');
-					$("[nbe-pop-trigee=" + selfClass.name + "] .nbe-pop-up-content").removeAttr('style');
-				})
-				/* for not closing popup inside click */
-				$('.nbe-pop-up-content').click(function (e) {
-					e.stopPropagation()
-				})
-			}
-			closePopUp(){
-				$("[nbe-pop-trigee=" + this.name + "]").removeAttr('style');
-				$("[nbe-pop-trigee=" + this.name + "] .nbe-pop-up-content").removeAttr('style');
-			}
-			excute() {
-				this.eventsNbe()
-			}
+    eventsNbe() {
+        /* for opening */
+        var selfClass = this;
+        $("[nbe-pop-triger=" + selfClass.name + "]").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            selfClass.data = $(this).data()
+            if( selfClass.runCodeAfterClick){
+                selfClass.runCodeAfterClick()
+            }
+            $('[nbe-pop-trigee]').click();
+            $("[nbe-pop-trigee=" + selfClass.name + "]").css({
+                'display': 'flex'
+            })
+            setTimeout(function () {
+                $("[nbe-pop-trigee=" + selfClass.name + "] .nbe-pop-up-content").css('opacity', 1)
+            }, 1)
+            $('body').addClass('nbe-no-scrolling');
+        })
+        /* for closeing */
+        let closerSelector = "[nbe-pop-trigee=" + selfClass.name + "]";
+        if(selfClass.closer){
+            closerSelector = "[nbe-pop-trigee=" + selfClass.name + "], " + selfClass.closer;
+        }
+        $(closerSelector).click(function () {
+            selfClass.closePopUp()
+        });
+        /* for not closing popup inside click */
+        $('.nbe-pop-up-content').click(function (e) {
+            e.stopPropagation()
+        })
+    }
+    closePopUp(){
+        $("[nbe-pop-trigee=" + this.name + "]").removeAttr('style');
+        $("[nbe-pop-trigee=" + this.name + "] .nbe-pop-up-content").removeAttr('style');
+        $('body').removeClass('nbe-no-scrolling');
+        if( this.runCodeAfterClose){
+            this.runCodeAfterClose()
+        }
+    }
+    excute() {
+        this.eventsNbe()
+    }
+}
 
-		}
+
 
 		let blahblah = new NbePopUp("name");
 	</script>
