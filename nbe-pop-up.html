@@ -100,6 +100,11 @@ class NbePopUp {
         $(closerSelector).click(function () {
             selfClass.closePopUp()
         });
+		$(document).keyup(function(e) {
+			 if (e.key === "Escape") { // escape key maps to keycode `27`
+				 selfClass.closePopUp()
+			}
+		});
         /* for not closing popup inside click */
         $('.nbe-pop-up-content').click(function (e) {
             e.stopPropagation()
