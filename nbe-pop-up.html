@@ -81,7 +81,7 @@ class NbePopUp {
             e.stopPropagation();
             selfClass.data = $(this).data()
             if( selfClass.runCodeAfterClick){
-                selfClass.runCodeAfterClick()
+                selfClass.runCodeAfterClick($("[nbe-pop-triger=" + selfClass.name + "]"))
             }
             $('[nbe-pop-trigee]').click();
             $("[nbe-pop-trigee=" + selfClass.name + "]").css({
