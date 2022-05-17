@@ -115,7 +115,7 @@ class NbePopUp {
         $("[nbe-pop-trigee=" + this.name + "] .nbe-pop-up-content").removeAttr('style');
         $('body').removeClass('nbe-no-scrolling');
         if( this.runCodeAfterClose){
-            this.runCodeAfterClose()
+            this.runCodeAfterClose($("[nbe-pop-trigee=" + this.name + "]"))
         }
     }
     excute() {
